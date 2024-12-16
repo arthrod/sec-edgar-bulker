@@ -1,0 +1,21 @@
+output/
+__pycache__/
+.env/
+.venv/
+*.pyc
+**/*.jsonl
+**/*.json
+**/*.log
+.aider*
+.aider*/*
+proxies*
+# Ignore all .txt files globally
+**/*.txt
+# Ignore all .pdf files globally
+**/*.pdf
+*.txt
+*.pdf
+*.jsonl
+*.json
+*.idx
+*.log

@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sec_edgar_bulker"
+version = "0.1.0"
+description = "SEC EDGAR Filing and Exhibit Downloader in bulk."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = ["sec", "edgar", "contracts", "securities", "legal tech", "finance", "filing", "scraping"]
+authors = [
+    { name = "Arthur Souza Rodrigues", email = "arthur@cicero.chat" }
+]
+dependencies = [
+    "aiofiles==24.1.0",
+    "aiohappyeyeballs==2.4.4",
+    "aiohttp==3.10.11",
+    "aiosignal==1.3.1",
+    "attrs==24.2.0",
+    "beautifulsoup4==4.12.3",
+    "certifi==2024.8.30",
+    "charset-normalizer==3.4.0",
+    "colorama==0.4.6",
+    "frozenlist==1.5.0",
+    "idna==3.10",
+    "iniconfig==2.0.0",
+    "logging==0.4.9.6",
+    "multidict==6.1.0",
+    "names==0.3.0",
+    "packaging==24.2",
+    "pluggy==1.5.0",
+    "propcache==0.2.0",
+    "pytest==8.3.4",
+    "pytest-asyncio==0.24.0",
+    "pyyaml==6.0.2",
+    "requests==2.32.3",
+    "soupsieve==2.6",
+    "tqdm==4.67.1",
+    "urllib3==2.2.3",
+    "yarl==1.15.2"
+]
+
+[project.urls]
+Homepage = "https://github.com/arthrod/sec-edgar-bulker"
+Repository = "https://github.com/arthrod/sec-edgar-bulker.git"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sec_edgar_bulker"]
