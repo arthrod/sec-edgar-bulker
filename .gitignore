@@ -11,9 +11,9 @@ __pycache__/
 proxies*
 # Ignore all .txt files globally
 **/*.txt
+!requirements.txt
 # Ignore all .pdf files globally
 **/*.pdf
-*.txt
 *.pdf
 *.jsonl
 *.json
