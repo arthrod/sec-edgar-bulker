@@ -1,6 +1,6 @@
 # SEC EDGAR Bulker
 
-A robust Python project for downloading and parsing SEC EDGAR filings with parallel processing capabilities.
+A robust Python project for downloading and parsing SEC EDGAR filings with parallel processing capabilities and more. 
 
 ## Future Project Structure
 ```
