@@ -1,0 +1,327 @@
+# Main Rule
+# I thought: Need a consistent approach to code changes
+# Problem was: Changes were being made without tracking
+# Solution: Establish rule for commenting and status tracking
+# I attest this solution is compatible with the next solutions.
+MAIN_RULE = """
+Comment out lines that need changes instead of deleting them.
+Add implementation status to this file for each change.
+"""
+
+# Implementation Status Tracking
+IMPLEMENTATION_STATUS = {
+    "test_cli_valid_config": False,  
+    # I thought: Need to fix CLI code
+    # Problem was: Ignored MAIN_RULE about commenting
+    # Solution: Comment old code, add new below, update status
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_download_mode_override": False,
+    # I thought: Need to modify CLI arguments
+    # Problem was: Didn't document in .cursorrules first
+    # Solution: Update status before making changes
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_years_override": False,
+    # I thought: Need to fix year validation
+    # Problem was: Deleted old code instead of commenting
+    # Solution: Preserve old code with comments
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_quarters_override": False,
+    # I thought: Need to fix quarter parsing
+    # Problem was: Didn't track changes in .cursorrules
+    # Solution: Document status before code changes
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_directory_creation": False,
+    # I thought: Need to fix directory permissions
+    # Problem was: Modified code without tracking
+    # Solution: Update status, comment old code
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_logging_setup": False,
+    # I thought: Need to fix logging configuration
+    # Problem was: Changed code without documentation
+    # Solution: Track changes in .cursorrules first
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_run_downloader": False,
+    # I thought: Need to fix async execution
+    # Problem was: Didn't preserve old implementation
+    # Solution: Comment out old code, track status
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_config_validation_error": False,
+    # I thought: Need to fix validation logic
+    # Problem was: Didn't follow status tracking rule
+    # Solution: Update .cursorrules before changes
+    # I attest this solution is compatible with the next solutions.
+
+    "test_get_random_headers_with_generator": True,
+    # I thought: Already working correctly
+    # Problem was: Didn't document why it works
+    # Solution: Add explanation in .cursorrules
+    # I attest this solution is compatible with the next solutions.
+
+    "test_get_random_headers_without_generator": False,
+    # I thought: Need to fix header generation
+    # Problem was: Didn't preserve old implementation
+    # Solution: Comment old code, update status
+    # I attest this solution is compatible with the next solutions.
+
+    "test_get_random_headers_without_random_settings": True,
+    # I thought: Working as expected
+    # Problem was: Didn't document success case
+    # Solution: Add explanation in .cursorrules
+    # I attest this solution is compatible with the next solutions.
+
+    "test_download_idx_file_success": False,
+    # I thought: Need to fix HTTP handling
+    # Problem was: Changed code without tracking
+    # Solution: Document changes, preserve old code
+    # I attest this solution is compatible with the next solutions.
+
+    "test_download_idx_file_failure": False,
+    # I thought: Need to fix error handling
+    # Problem was: Didn't track implementation status
+    # Solution: Update status before changes
+    # I attest this solution is compatible with the next solutions.
+
+    "test_download_idx_file_yearly": False,
+    # I thought: Need to fix yearly downloads
+    # Problem was: Modified without documentation
+    # Solution: Track changes in .cursorrules
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_help": False,
+    # I thought: Need to fix help text
+    # Problem was: Missing config file option
+    # Solution: Add documentation for config parameter
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_missing_config": False,
+    # I thought: Need to fix error messaging
+    # Problem was: Incorrect error message shown
+    # Solution: Update error handling with proper message
+    # I attest this solution is compatible with the next solutions.
+
+    "test_cli_invalid_download_mode": False,
+    # I thought: Need to fix mode validation
+    # Problem was: Wrong error message for invalid mode
+    # Solution: Implement proper mode validation
+    # I attest this solution is compatible with the next solutions.
+
+    "test_header_generator_valid_email_format": False,
+    # I thought: Need to fix email validation
+    # Problem was: Invalid domain format check
+    # Solution: Implement proper email format validation
+    # I attest this solution is compatible with the next solutions.
+
+    "test_proxy_manager_disabled": False,
+    # I thought: Need to fix proxy error handling
+    # Problem was: Wrong error being raised
+    # Solution: Implement proper error handling
+    # I attest this solution is compatible with the next solutions.
+
+    "test_download_and_process_idx_files_success": False,
+    # I thought: Need to fix idx file processing
+    # Problem was: Changed code without documenting idx_type
+    # Solution: Update status, preserve old implementation
+    # I attest this solution is compatible with the next solutions.
+
+    "test_download_and_process_idx_files_partial_failure": False,
+    # I thought: Need to fix partial failure handling
+    # Problem was: Modified without tracking idx_type changes
+    # Solution: Document status before implementing fix
+    # I attest this solution is compatible with the next solutions.
+
+    "test_download_idx_file_creates_directory": False,
+    # I thought: Need to fix directory creation
+    # Problem was: Changed without cleaning up properly
+    # Solution: Track status, preserve old directory logic
+    # I attest this solution is compatible with the next solutions.
+
+    "test_download_idx_file_overwrites_existing": False,
+    # I thought: Need to fix file overwrite behavior
+    # Problem was: Modified without handling HTTP 403
+    # Solution: Document changes, preserve old logic
+    # I attest this solution is compatible with the next solutions.
+
+    "test_download_idx_file_large_content": False,
+    # I thought: Need to fix large file handling
+    # Problem was: Changed without proper content checks
+    # Solution: Update status before implementing fix
+    # I attest this solution is compatible with the next solutions.
+
+    "test_download_idx_file_unicode_content": False,
+    # I thought: Need to fix unicode handling
+    # Problem was: Modified encoding without documentation
+    # Solution: Track changes, preserve old encoding logic
+    # I attest this solution is compatible with the next solutions.
+
+    "test_load_proxies_invalid_format": False,
+    # I thought: Need to fix proxy validation
+    # Problem was: Changed format checks without tracking
+    # Solution: Document status before implementing fix
+    # I attest this solution is compatible with the next solutions.
+
+    "test_load_proxies_missing_file": False,
+    # I thought: Need to fix missing file handling
+    # Problem was: Modified error handling without docs
+    # Solution: Update status, preserve old error logic
+    # I attest this solution is compatible with the next solutions.
+
+    "test_proxy_usage_limit": False,
+    # I thought: Need to fix proxy rotation
+    # Problem was: Changed limits without documentation
+    # Solution: Track changes before implementing fix
+    # I attest this solution is compatible with the next solutions.
+
+    "test_proxy_auth_security": False,
+    # I thought: Need to fix credential masking
+    # Problem was: Modified auth without proper security
+    # Solution: Document status, implement secure handling
+    # I attest this solution is compatible with the next solutions.
+
+    "test_setup_logging_file_creation": True,
+    # I thought: Working correctly
+    # Problem was: Didn't document success
+    # Solution: Add explanation of working state
+    # I attest this solution is compatible with the next solutions.
+
+    "test_setup_logging_directory_creation": True,
+    # I thought: Directory creation works
+    # Problem was: Lacked documentation of success
+    # Solution: Add status explanation
+    # I attest this solution is compatible with the next solutions.
+
+    "test_setup_logging_rotation": True,
+    # I thought: Log rotation working properly
+    # Problem was: Missing success documentation
+    # Solution: Document working implementation
+    # I attest this solution is compatible with the next solutions.
+
+    "test_generate_batch_id_invalid_format": True,
+    # I thought: Format validation works
+    # Problem was: Didn't explain success case
+    # Solution: Add documentation of working state
+    # I attest this solution is compatible with the next solutions.
+
+    "test_validate_config_filtering_dates": True
+    # I thought: Date filtering works correctly
+    # Problem was: Success case not documented
+    # Solution: Add explanation of working state
+    # I attest this solution is compatible with the n
+    # I thought: Working correctly
+    # Problem was: Didn't document success
+    # Solution: Add explanation of working state
+    # I attest this solution is compatible with the next solutions.
+
+    "test_setup_logging_directory_creation": True,
+    "test_setup_logging_rotation": True,
+    # I thought: Log rotation working properly
+    # Problem was: Missing success documentation
+    # Solution: Document working implementation
+    # I attest this solution is compatible with the next solutions.
+
+    "test_generate_batch_id_invalid_format": True,
+    # I thought: Format validation works
+    # Problem was: Didn't explain success case
+    # Solution: Add documentation of working state
+    # I attest this solution is compatible with the next solutions.
+
+    "test_validate_config_filtering_dates": True
+    # I thought: Date filtering works correctly
+    # Problem was: Success case not documented
+    # Solution: Add explanation of working state
+    # I attest this solution is compatible with the next solutions.
+}
+
+# Test Failure Details
+# I thought: Need to track specific test failures
+# Problem was: No clear record of why tests were failing
+# Solution: Document each failure with exact error message
+# I attest this solution is compatible with the next solutions.
+TEST_FAILURES = {
+    "test_cli_help": "Missing --config-file in help output",
+    "test_cli_missing_config": "Wrong error message for missing config",
+    "test_cli_valid_config": "Exit code 2 instead of 0",
+    "test_cli_download_mode_override": "Exit code 2 instead of 0",
+    "test_cli_years_override": "Exit code 2 instead of 0",
+    "test_cli_quarters_override": "Exit code 2 instead of 0",
+    "test_cli_invalid_download_mode": "Wrong error message for invalid mode",
+    "test_cli_directory_creation": "Exit code 2 instead of 0",
+    "test_cli_logging_setup": "Exit code 2 instead of 0",
+    "test_cli_run_downloader": "Exit code 2 instead of 0",
+    "test_cli_config_validation_error": "Wrong error message for invalid config",
+    "test_get_random_headers_without_generator": "Missing static_headers attribute",
+    "test_header_generator_valid_email_format": "Invalid email domain format",
+    "test_download_idx_file_success": "HTTP 403 error",
+    "test_download_idx_file_failure": "File not cleaned up",
+    "test_download_idx_file_yearly": "HTTP 403 error",
+    "test_download_and_process_idx_files_success": "idx_type not defined",
+    "test_download_and_process_idx_files_partial_failure": "idx_type not defined",
+    "test_download_idx_file_creates_directory": "Directory not empty",
+    "test_download_idx_file_overwrites_existing": "HTTP 403 error",
+    "test_download_idx_file_large_content": "HTTP 403 error",
+    "test_download_idx_file_unicode_content": "HTTP 403 error",
+    "test_proxy_manager_disabled": "NoProxiesAvailableError not raised",
+    "test_load_proxies_invalid_format": "Wrong error handling",
+    "test_load_proxies_missing_file": "Wrong error handling",
+    "test_proxy_usage_limit": "Wrong proxy selection",
+    "test_proxy_auth_security": "Credentials visible in output"
+}
+
+# Progress Summary
+# I thought: Need to track overall testing progress
+# Problem was: No way to measure improvement
+# Solution: Add counters for total, passed, and failed tests
+# I attest this solution is compatible with the next solutions.
+TOTAL_TESTS = len(IMPLEMENTATION_STATUS)
+PASSED_TESTS = sum(1 for status in IMPLEMENTATION_STATUS.values() if status)
+FAILED_TESTS = TOTAL_TESTS - PASSED_TESTS
+
+# Status Update Function
+# I thought: Need a way to update test status
+# Problem was: Manual updates were error-prone
+# Solution: Create helper function for status updates
+# I attest this solution is compatible with the next solutions.
+def update_status(test_name, passed=True):
+    """Update the implementation status of a test"""
+    if test_name in IMPLEMENTATION_STATUS:
+        IMPLEMENTATION_STATUS[test_name] = passed
+
+# Pending Issues
+# I thought: Need to organize remaining work
+# Problem was: Issues scattered across different components
+# Solution: Group issues by component for better tracking
+# I attest this solution is compatible with the next solutions.
+PENDING_ISSUES = {
+    "CLI": [
+        "Fix argument handling for config file",
+        "Fix error messages and exit codes",
+        "Fix help text and documentation",
+        "Fix directory creation and validation",
+        "Fix logging setup and configuration"
+    ],
+    "Header Generator": [
+        "Fix static headers handling",
+        "Fix email format validation",
+        "Fix header attribute access"
+    ],
+    "IDX Downloader": [
+        "Fix HTTP 403 error handling",
+        "Fix file cleanup and overwrite",
+        "Fix directory cleanup",
+        "Fix idx_type reference",
+        "Fix large and unicode content handling"
+    ],
+    "Proxy Manager": [
+        "Fix proxy format validation",
+        "Fix missing file handling",
+        "Fix proxy rotation and selection",
+        "Fix auth security and masking"
+    ]
+}
+
