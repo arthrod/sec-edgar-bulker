@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "sec_edgar_bulker"
+name = "sec-edgar-bulker"
 version = "0.1.0"
-description = "SEC EDGAR Filing and Exhibit Downloader in bulk."
+description = "SEC EDGAR Filing and Exhibit Downloader in bulk"
 readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
@@ -22,6 +22,7 @@ dependencies = [
     "beautifulsoup4==4.12.3",
     "certifi==2024.8.30",
     "charset-normalizer==3.4.0",
+    "click==8.1.7",
     "colorama==0.4.6",
     "frozenlist==1.5.0",
     "idna==3.10",
@@ -32,8 +33,7 @@ dependencies = [
     "packaging==24.2",
     "pluggy==1.5.0",
     "propcache==0.2.0",
-    "pytest==8.3.4",
-    "pytest-asyncio==0.24.0",
+    "pydantic==2.6.1",
     "pyyaml==6.0.2",
     "requests==2.32.3",
     "soupsieve==2.6",
@@ -42,9 +42,42 @@ dependencies = [
     "yarl==1.15.2"
 ]
 
+[project.optional-dependencies]
+test = [
+    "pytest==8.3.4",
+    "pytest-asyncio==0.24.0"
+]
+
 [project.urls]
 Homepage = "https://github.com/arthrod/sec-edgar-bulker"
 Repository = "https://github.com/arthrod/sec-edgar-bulker.git"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sec_edgar_bulker"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+branch = true
+source = ["src/sec_edgar_bulker"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "pass",
+    "raise ImportError"
+]
+ignore_errors = true
+omit = [
+    "tests/*",
+    "setup.py"
+]

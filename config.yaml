@@ -1,0 +1,98 @@
+years: [2023]
+quarters: [1, 2]
+directories:
+  output: output
+  exhibits: exhibits
+  filings: filings
+  logs: logs
+  master_idx: idx_files
+  progress: progress
+  results: results
+
+proxy:
+  enabled: false
+  file: proxies.txt
+  mode: random
+  required: false
+  timeout: 600
+  usage_limit: 5
+
+download:
+  pdfs: true
+  metadata_only: false
+  max_workers: 50
+  worker_timeout: 4000
+  resume_support: true
+  mode: both
+
+processing:
+  batch_id_format: "%Y%m%d_%H%M%S"
+  cache_downloads: true
+  cache_by_year: true
+
+exhibit_types:
+  - "EX-10"
+  - "EX-10-K"
+
+exhibit_exclusions:
+  - "EX-3"
+  - "EX-32"
+
+metadata:
+  default_fields:
+    - cik
+    - company_name
+    - form_type
+    - date_filed
+    - accession_number
+    - master_file
+
+header_parsing:
+  use_config: false
+  default:
+    accession_number: "ACCESSION NUMBER:\\s*(\\S+)"
+    company_name: "COMPANY CONFORMED NAME:\\s*(.+?)\\n"
+    cik: "CENTRAL INDEX KEY:\\s*(\\d+)"
+  custom:
+    sections:
+      - name: "IDENTIFICATION"
+        start: "<SEC-HEADER>"
+        end: "FILING VALUES"
+        fields:
+          - name: accession_number
+            pattern: "ACCESSION NUMBER:\\s*(\\S+)"
+          - name: company_name
+            pattern: "COMPANY CONFORMED NAME:\\s*(.+?)\\n"
+          - name: cik
+            pattern: "CENTRAL INDEX KEY:\\s*(\\d+)"
+
+header_generator:
+  use_generator: true
+  settings:
+    static_headers:
+      User-Agent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 SEC-EDGAR-Bulker/0.1.0 myemail@example.com"
+      Accept-Encoding: "gzip, deflate"
+      Host: "www.sec.gov"
+  random_settings:
+    email_domains:
+      - "gmail.com"
+      - "yahoo.com"
+      - "hotmail.com"
+      - "example.com"
+    navigator: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+
+logging:
+  level: DEBUG
+  format: "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+  file_enabled: true
+  batch_specific: true
+
+filtering:
+  company_filter_enabled: true
+  date_range_filter_enabled: true
+  ciks:
+    - "0000320193"
+  company_names:
+    - "International Business Machines Corp"
+  date_range_start: "2023-01-01"
+  date_range_end: "2023-12-31" 
