@@ -1,10 +1,9 @@
 """Header generator for SEC EDGAR requests."""
-
-import random
 import re
 from typing import Dict
 
 from .models import Config, HeaderGeneratorSettings, StaticHeaders
+import secrets
 
 
 class HeaderGenerator:
@@ -63,12 +62,12 @@ class HeaderGenerator:
         headers = self._static_headers.copy()
         
         if self.settings.random_settings:
-            domain = random.choice(self.settings.random_settings.email_domains)
+            domain = secrets.choice(self.settings.random_settings.email_domains)
             cleaned_domain = domain.strip('() \t\n\r')
             if not self._validate_email_domain(cleaned_domain):
                 raise ValueError(f"Invalid email domain format: {domain}")
                 
-            email = f"user{random.randint(1000,9999)}@{cleaned_domain}"
+            email = f"user{secrets.SystemRandom().randint(1000,9999)}@{cleaned_domain}"
             headers.update({
                 "From": email,
                 "User-Agent": f"{self.settings.random_settings.navigator}/SEC-EDGAR-Bulker {email}"

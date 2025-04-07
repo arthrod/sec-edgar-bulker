@@ -1,6 +1,4 @@
 """Proxy manager for SEC EDGAR requests."""
-
-import random
 from typing import List, Dict, Optional, Tuple, Set
 import aiohttp
 import re
@@ -11,6 +9,7 @@ import ipaddress
 
 from .models import Config
 from .exceptions import NoProxiesAvailableError, InvalidProxyFormatError, ProxyFileError
+import secrets
 
 class ProxyManager:
     """Proxy manager for handling proxy rotation and authentication."""
@@ -171,9 +170,9 @@ class ProxyManager:
         # Prefer unused proxies for better rotation
         unused_proxies = [p for p in available_proxies if p[0] not in self.used_proxies]
         if unused_proxies:
-            proxy = random.choice(unused_proxies)
+            proxy = secrets.choice(unused_proxies)
         else:
-            proxy = random.choice(available_proxies)
+            proxy = secrets.choice(available_proxies)
             
         self.proxy_usage_count[proxy[0]] = self.proxy_usage_count.get(proxy[0], 0) + 1
         self.used_proxies.add(proxy[0])
