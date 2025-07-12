@@ -12,7 +12,6 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
-import random
 import re
 import signal
 import uuid
@@ -26,6 +25,7 @@ from aiohttp import ClientTimeout, BasicAuth
 from yarl import URL
 import pytz
 from tqdm import tqdm
+import secrets
 
 
 # Ignore SIGHUP (hangup signal)
@@ -75,7 +75,7 @@ class ProxyManager:
             available_proxies = self.proxies
         
         # Select and update proxy usage
-        proxy = random.choice(available_proxies)
+        proxy = secrets.choice(available_proxies)
         self.proxy_usage_count[proxy] += 1
         
         # Format proxy settings with full authentication
